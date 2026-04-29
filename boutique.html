@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Boutique — Ultimate RP</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <a class="logo-h" href="index.html">ULTIMATE <span class="rp">RP</span></a>
+  <nav>
+    <a class="nav-link" href="index.html">Accueil</a>
+    <div class="nav-item">
+      <button class="nav-link">Règlement ▾</button>
+      <div class="dropdown">
+        <a href="reglement-global.html">Règlement Global</a>
+        <a href="reglement-legal.html">Règlement Légal</a>
+        <a href="reglement-illegal.html">Règlement Illégal</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <button class="nav-link">Ultimate ▾</button>
+      <div class="dropdown">
+        <a href="lore.html">Lore du Serveur</a>
+        <a href="lexique.html">Lexique RP</a>
+
+      </div>
+    </div>
+
+
+    <div class="nav-item">
+      <button class="nav-link">Catalogue ▾</button>
+      <div class="dropdown">
+        <a href="catalogue.html">Garages</a>
+        <a href="catalogue.html">Maisons</a>
+        <a href="catalogue.html">Entrepots</a>
+        <a href="boutique.html">Appartements</a>
+      </div>
+    </div>
+    <a class="nav-link" href="streamers.html">Nos Streamers</a>
+    <a class="nav-link" href="boutique.html">Boutique</a>
+
+  </nav>
+      <a class="btn-discord" href="https://discord.gg/ultimaterp" target="_blank">
+    <i class='bx bxl-discord-alt'></i> Discord
+  </a>
+</header>
+
+<!-- PAGE HEADER -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-tag">🛒 Boutique</div>
+    <h1 class="page-title">Boutique</h1>
+    <p class="page-desc">Accédez à notre boutique Tebex.</p>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="page-content">
+  <p style="color:var(--txt2);font-size:13px;">Contenu à venir...</p>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo-txt">ULTIMATE <span class="acc">RP</span></div>
+      <p>Le serveur GTA V FiveM RP le plus immersif. Une communauté passionnée, des règles strictes et un roleplay de qualité.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <a href="index.html"</a>
+      <a href="#">Règlement</a>
+      <a href="#">Rejoindre</a>
+    </div>
+    <div class="footer-col">
+      <h4>Catalogue</h4>
+      <a href="#">Concession Auto</a>
+      <a href="#">Agence Immobilière</a>
+      <a href="boutique.html"</a>
+    </div>
+    <div class="footer-col">
+      <h4>Communauté</h4>
+      <a href="#">Discord</a>
+      <a href="streamers.html"</a>
+      <a href="touches-en-jeu.html"</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Ultimate RP — Tous droits réservés.</span>
+    <span>Serveur GTA V FiveM — Non affilié à Rockstar Games</span>
+  </div>
+</footer>
+
+
+
+<script>
+const cur = window.location.pathname.split('/').pop() || 'index.html';
+document.querySelectorAll('a.nav-link').forEach(l => {
+  if (l.getAttribute('href') === cur) l.classList.add('active');
+});
+</script>
+</body>
+</html>

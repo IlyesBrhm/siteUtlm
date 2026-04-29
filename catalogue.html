@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Catalogue — Ultimate RP</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.cat-tabs-wrap{
+  background:var(--surface);
+  border-bottom:1px solid var(--border);
+  position:sticky;top:52px;z-index:100;
+}
+.cat-tabs{
+  max-width:1100px;margin:0 auto;
+  padding:0 40px;display:flex;gap:4px;
+}
+.cat-tab{
+  padding:14px 20px;background:none;border:none;
+  font-family:'Inter',sans-serif;font-size:12px;font-weight:600;
+  text-transform:uppercase;letter-spacing:0.5px;
+  color:var(--txt3);cursor:pointer;
+  border-bottom:2px solid transparent;
+  transition:color .15s,border-color .15s;
+  display:flex;align-items:center;gap:7px;white-space:nowrap;
+}
+.cat-tab i{font-size:15px}
+.cat-tab:hover{color:var(--txt2)}
+.cat-tab.active{color:var(--acc);border-bottom-color:var(--acc)}
+
+.cat-content{max-width:1100px;margin:0 auto;padding:48px 40px 80px}
+.cat-panel{display:none}
+.cat-panel.active{display:block}
+
+.cat-panel-title{
+  font-size:11px;font-weight:700;letter-spacing:3px;
+  text-transform:uppercase;color:var(--acc2);
+  margin-bottom:24px;display:flex;align-items:center;gap:10px;
+}
+.cat-panel-title::after{content:'';flex:1;height:1px;background:var(--border)}
+
+.affiche-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(500px,1fr));
+  gap:16px;
+}
+.affiche-item{
+  border:1px solid var(--border);border-radius:8px;
+  overflow:hidden;cursor:pointer;position:relative;
+  background:var(--surface2);
+  transition:border-color .2s,transform .2s;
+}
+.affiche-item:hover{border-color:rgba(232,195,158,0.3);transform:translateY(-2px);}
+.affiche-item img{width:100%;height:auto;display:block;}
+.affiche-overlay{
+  position:absolute;inset:0;background:rgba(0,0,0,0);
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s;
+}
+.affiche-item:hover .affiche-overlay{background:rgba(0,0,0,0.4)}
+.affiche-overlay i{font-size:40px;color:#fff;opacity:0;transform:scale(0.8);transition:opacity .2s,transform .2s;}
+.affiche-item:hover .affiche-overlay i{opacity:1;transform:scale(1)}
+
+.lightbox{
+  position:fixed;inset:0;background:rgba(0,0,0,0.93);
+  z-index:9999;display:none;
+  align-items:center;justify-content:center;padding:20px;
+}
+.lightbox.open{display:flex}
+.lightbox img{max-width:95vw;max-height:92vh;object-fit:contain;border-radius:6px;}
+.lightbox-close{
+  position:absolute;top:20px;right:24px;
+  font-size:36px;color:#fff;cursor:pointer;
+  background:none;border:none;opacity:0.7;transition:opacity .15s;
+}
+.lightbox-close:hover{opacity:1}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a class="logo-h" href="index.html">ULTIMATE <span class="rp">RP</span></a>
+  <nav>
+    <a class="nav-link" href="index.html">Accueil</a>
+    <div class="nav-item">
+      <button class="nav-link">Règlement ▾</button>
+      <div class="dropdown">
+        <a href="reglement-global.html">Règlement Global</a>
+        <a href="reglement-legal.html">Règlement Légal</a>
+        <a href="reglement-illegal.html">Règlement Illégal</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <button class="nav-link">Ultimate ▾</button>
+      <div class="dropdown">
+        <a href="lore.html">Lore du Serveur</a>
+        <a href="lexique.html">Lexique RP</a>
+      </div>
+    </div>
+
+    <a class="nav-link" href="catalogue.html">Catalogue</a>
+    <a class="nav-link" href="streamers.html">Nos Streamers</a>
+    <a class="nav-link" href="boutique.html">Boutique</a>
+
+  </nav>
+      <a class="btn-discord" href="https://discord.gg/ultimaterp" target="_blank">
+    <i class='bx bxl-discord-alt'></i> Discord
+  </a>
+</header>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-tag"><i class='bx bx-store'></i> Catalogue</div>
+    <h1 class="page-title">Catalogue <span class="acc">Ultimate RP</span></h1>
+    <p class="page-desc">Retrouvez tous les biens disponibles sur le serveur. Cliquez sur une affiche pour l'agrandir.</p>
+  </div>
+</div>
+
+<!-- ONGLETS -->
+<div class="cat-tabs-wrap">
+  <div class="cat-tabs">
+    <button class="cat-tab active" data-tab="maisons"><i class='bx bx-home'></i> Maisons</button>
+    <button class="cat-tab" data-tab="appartements"><i class='bx bx-buildings'></i> Appartements</button>
+    <button class="cat-tab" data-tab="garages"><i class='bx bx-car'></i> Garages</button>
+    <button class="cat-tab" data-tab="entrepots"><i class='bx bx-package'></i> Entrepôts</button>
+  </div>
+</div>
+
+<div class="cat-content">
+
+  <!-- MAISONS -->
+  <div class="cat-panel active" id="maisons">
+    <div class="cat-panel-title"><i class='bx bx-home'></i> Maisons</div>
+    <div class="affiche-grid">
+      <div class="affiche-item" onclick="openLightbox('maison.png.png')">
+        <img src="maison.png.png" alt="Catalogue Maisons">
+        <div class="affiche-overlay"><i class='bx bx-zoom-in'></i></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- APPARTEMENTS -->
+  <div class="cat-panel" id="appartements">
+    <div class="cat-panel-title"><i class='bx bx-buildings'></i> Appartements</div>
+    <div class="affiche-grid">
+      <div class="affiche-item" onclick="openLightbox('apart1.png')">
+        <img src="apart1.png" alt="Catalogue Appartements 1">
+        <div class="affiche-overlay"><i class='bx bx-zoom-in'></i></div>
+      </div>
+      <div class="affiche-item" onclick="openLightbox('apart2.png')">
+        <img src="apart2.png" alt="Catalogue Appartements 2">
+        <div class="affiche-overlay"><i class='bx bx-zoom-in'></i></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GARAGES -->
+  <div class="cat-panel" id="garages">
+    <div class="cat-panel-title"><i class='bx bx-car'></i> Garages</div>
+    <div class="affiche-grid">
+      <div class="affiche-item" onclick="openLightbox('garage1.png')">
+        <img src="garage1.png" alt="Catalogue Garages 1">
+        <div class="affiche-overlay"><i class='bx bx-zoom-in'></i></div>
+      </div>
+      <div class="affiche-item" onclick="openLightbox('garage2.png')">
+        <img src="garage2.png" alt="Catalogue Garages 2">
+        <div class="affiche-overlay"><i class='bx bx-zoom-in'></i></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ENTREPOTS -->
+  <div class="cat-panel" id="entrepots">
+    <div class="cat-panel-title"><i class='bx bx-package'></i> Entrepôts</div>
+    <div class="affiche-grid">
+      <div class="affiche-item" onclick="openLightbox('entrepots.png')">
+        <img src="entrepots.png" alt="Catalogue Entrepôts">
+        <div class="affiche-overlay"><i class='bx bx-zoom-in'></i></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo-txt">ULTIMATE <span class="acc">RP</span></div>
+      <p>Le serveur GTA V FiveM RP le plus immersif. Une communauté passionnée, des règles strictes et un roleplay de qualité.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <a href="index.html">Accueil</a>
+      <a href="reglement-global.html">Règlement</a>
+      <a href="lore.html">Wiki</a>
+      <a href="comment-rejoindre.html">Rejoindre</a>
+    </div>
+    <div class="footer-col">
+      <h4>Catalogue</h4>
+      <a href="catalogue.html#maisons">Maisons</a>
+      <a href="catalogue.html#appartements">Appartements</a>
+      <a href="catalogue.html#garages">Garages</a>
+      <a href="catalogue.html#entrepots">Entrepôts</a>
+    </div>
+    <div class="footer-col">
+      <h4>Communauté</h4>
+      <a href="https://discord.gg/ultimaterp" target="_blank">Discord</a>
+      <a href="streamers.html">Nos Streamers</a>
+      <a href="touches-en-jeu.html">Touches en jeu</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Ultimate RP — Tous droits réservés.</span>
+    <span>Serveur GTA V FiveM — Non affilié à Rockstar Games</span>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close">✕</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+// Nav active
+const cur = window.location.pathname.split('/').pop() || 'index.html';
+document.querySelectorAll('a.nav-link').forEach(l => {
+  if (l.getAttribute('href') === cur) l.classList.add('active');
+});
+
+// Onglets
+document.querySelectorAll('.cat-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.cat-panel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById(tab.dataset.tab).classList.add('active');
+  });
+});
+
+// Ouvre l'onglet depuis l'URL (#maisons etc.)
+const hash = window.location.hash.replace('#','');
+if(hash){
+  const tab = document.querySelector(`[data-tab="${hash}"]`);
+  if(tab) tab.click();
+}
+
+// Lightbox
+function openLightbox(src){
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeLightbox(); });
+</script>
+</body>
+</html>
